@@ -1,0 +1,147 @@
+.legal-page main {
+  padding: 0 0 4rem;
+}
+
+.legal-shell {
+  width: min(980px, calc(100vw - 2rem));
+  margin: 0 auto;
+}
+
+.legal-hero {
+  padding: 8.6rem 0 2.4rem;
+}
+
+.legal-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.62);
+}
+
+.legal-kicker::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.4);
+}
+
+.legal-title {
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: clamp(2.4rem, 5vw, 4.3rem);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  font-weight: var(--font-heading-weight);
+}
+
+.legal-intro {
+  max-width: 44rem;
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.86;
+}
+
+.legal-content {
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.68)),
+    rgba(255, 255, 255, 0.74);
+  box-shadow: var(--shadow-soft);
+}
+
+.legal-stack {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.legal-block {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.legal-block:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.legal-block h2 {
+  margin: 0 0 0.72rem;
+  font-family: var(--heading-font);
+  font-size: 1.25rem;
+  font-weight: var(--font-heading-weight);
+  line-height: 1.2;
+}
+
+.legal-block p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.82;
+}
+
+.legal-block p + p {
+  margin-top: 0.82rem;
+}
+
+.legal-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+  color: var(--ink-soft);
+  line-height: 1.78;
+}
+
+.legal-definition {
+  margin: 0;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.legal-definition div {
+  display: grid;
+  gap: 0.24rem;
+}
+
+.legal-definition dt {
+  color: rgba(17, 17, 17, 0.54);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.legal-definition dd {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.72;
+}
+
+.legal-page .site-footer {
+  margin-top: 2.4rem;
+}
+
+@media (max-width: 760px) {
+  .legal-hero {
+    padding: 7.4rem 0 1.8rem;
+  }
+
+  .legal-content {
+    border-radius: var(--radius-card);
+  }
+
+  .legal-stack {
+    gap: 1.3rem;
+  }
+
+  .legal-block {
+    padding-bottom: 1.2rem;
+  }
+}

@@ -1,0 +1,1028 @@
+.fuji-page {
+  --fuji-paper: #f4f1eb;
+  --fuji-ash: #e7e3dc;
+  --fuji-moss: #4f6f58;
+  --fuji-lava: #8b3e2f;
+  --fuji-slate: #242424;
+  background: var(--fuji-paper);
+  overflow-x: hidden;
+}
+
+.fuji-page .site-header {
+  position: sticky;
+}
+
+.fuji-page .nav-links {
+  gap: 1.15rem;
+}
+
+.fuji-page .header-actions {
+  margin-left: auto;
+}
+
+.fuji-page .nav-toggle {
+  flex: 0 0 auto;
+}
+
+.fuji-page main {
+  overflow: hidden;
+}
+
+.fuji-hero {
+  position: relative;
+  min-height: 82svh;
+  margin-top: calc((var(--header-top-gap) + 4.2rem) * -1);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  background: #111111;
+  color: #ffffff;
+}
+
+.fuji-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 56% 52%;
+  opacity: 0.96;
+}
+
+.fuji-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.16) 38%, rgba(0, 0, 0, 0.78) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.26) 54%, rgba(0, 0, 0, 0.08) 100%);
+}
+
+.fuji-hero-shell {
+  position: relative;
+  z-index: 1;
+  padding: 9rem 0 4.5rem;
+}
+
+.fuji-hero-copy {
+  width: min(46rem, 100%);
+  display: grid;
+  gap: 1.1rem;
+}
+
+.fuji-hero [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.fuji-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.fuji-kicker::before {
+  content: "";
+  width: 2.4rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.fuji-hero h1,
+.fuji-section-heading h2,
+.statement-copy h2,
+.route-day-label strong,
+.value-lines h3,
+.readiness-lists h3,
+.included-columns h3,
+.rules-summary h3,
+.document-band h3,
+.join-copy h3,
+.join-copy h2 {
+  font-family: var(--heading-font);
+  font-weight: var(--font-heading-weight);
+}
+
+.fuji-hero h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 5.2rem;
+  line-height: 0.96;
+  letter-spacing: 0.01em;
+}
+
+.fuji-hero h1 span {
+  display: block;
+}
+
+.fuji-hero h1 span + span {
+  margin-top: 0.08em;
+}
+
+.fuji-hero p {
+  max-width: 38rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.04rem;
+  line-height: 1.86;
+}
+
+.hero-season {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.72rem 1rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-season span + span {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.hero-season span + span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.22em;
+  width: 1px;
+  height: 1em;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.fuji-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.fuji-hero-actions .button-secondary {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.fuji-overview {
+  padding: 3.2rem 0 4.2rem;
+  background: var(--fuji-paper);
+}
+
+.fuji-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(18rem, 0.58fr);
+  gap: clamp(1.8rem, 4vw, 3.4rem);
+  align-items: end;
+  margin-bottom: 2.15rem;
+}
+
+.fuji-section-heading .section-kicker {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.fuji-section-heading h2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.fuji-section-heading p {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  max-width: 35rem;
+  justify-self: end;
+  align-self: end;
+}
+
+.fuji-section-heading h2,
+.statement-copy h2,
+.join-copy h2 {
+  margin: 0.8rem 0 0;
+  max-width: 12.5em;
+  font-size: 3rem;
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+.fuji-section-heading p,
+.statement-grid > p,
+.join-copy p {
+  margin: 0;
+  color: rgba(17, 17, 17, 0.68);
+  line-height: 1.86;
+}
+
+.fuji-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(17, 17, 17, 0.16);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+}
+
+.fuji-facts div {
+  display: grid;
+  gap: 0.46rem;
+  min-height: 7.8rem;
+  padding: 1.2rem 1.25rem;
+  border-right: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.fuji-facts div:last-child {
+  border-right: 0;
+}
+
+.fuji-facts dt,
+.route-day-label span,
+.route-day li span,
+.cancel-head span,
+.season-months span,
+.form-row label {
+  color: rgba(17, 17, 17, 0.56);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fuji-facts dd {
+  margin: 0;
+  align-self: end;
+  color: var(--ink);
+  font-size: 1.18rem;
+  line-height: 1.4;
+}
+
+.fuji-statement {
+  padding: 4.8rem 0;
+  background: #111111;
+  color: #ffffff;
+}
+
+.statement-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(18rem, 0.58fr);
+  gap: clamp(1.8rem, 4vw, 3.4rem);
+  align-items: end;
+}
+
+.statement-grid .section-kicker,
+.statement-grid > p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.statement-grid .section-kicker::before {
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.statement-copy h2 {
+  max-width: 9em;
+}
+
+.section {
+  padding: 4.6rem 0;
+}
+
+.fuji-value {
+  background: #ffffff;
+}
+
+.value-lines {
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+.value-lines article {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(12rem, 0.34fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.value-lines article:last-child {
+  border-bottom: 0;
+}
+
+.value-lines span {
+  color: var(--fuji-lava);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.value-lines h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.45rem;
+  line-height: 1.14;
+}
+
+.value-lines p {
+  margin: 0;
+  color: rgba(17, 17, 17, 0.7);
+  line-height: 1.78;
+}
+
+.route-timeline {
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+.route-day {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.42fr) minmax(0, 0.58fr);
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.route-day-label {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.route-day-label strong {
+  max-width: 13ch;
+  font-size: 2.2rem;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.route-day ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.route-day li {
+  display: grid;
+  grid-template-columns: 8.4rem 1fr;
+  gap: 1rem;
+  color: rgba(17, 17, 17, 0.7);
+  line-height: 1.82;
+}
+
+.route-day li span {
+  padding-top: 0.12rem;
+  color: var(--fuji-lava);
+}
+
+.fuji-image-band {
+  height: 19rem;
+  overflow: hidden;
+  background: #111111;
+}
+
+.fuji-image-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 48%;
+}
+
+.fuji-image-band--stones img {
+  object-position: 48% 45%;
+}
+
+.fuji-photo-sequence {
+  background: #111111;
+}
+
+.photo-strip {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr 0.82fr 0.82fr;
+  min-height: clamp(20rem, 33vw, 31rem);
+}
+
+.photo-tile {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #111111;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.photo-tile:last-child {
+  border-right: 0;
+}
+
+.photo-tile img {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(20rem, 33vw, 31rem);
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.95) contrast(1.04);
+}
+
+.photo-tile--wide img {
+  object-position: 50% 48%;
+}
+
+.photo-tile figcaption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.54);
+}
+
+.join-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.join-copy {
+  display: block;
+  margin: 0;
+}
+
+.readiness-lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+.readiness-lists > div {
+  padding: 1.45rem 0;
+}
+
+.readiness-lists > div + div {
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.readiness-lists h3,
+.included-columns h3,
+.rules-summary h3 {
+  margin: 0 0 1rem;
+  font-size: 1.45rem;
+  line-height: 1.18;
+}
+
+.readiness-lists ul,
+.included-columns ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.readiness-lists li,
+.included-columns li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: rgba(17, 17, 17, 0.7);
+  line-height: 1.78;
+}
+
+.readiness-lists li::before,
+.included-columns li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--fuji-moss);
+}
+
+.fuji-included {
+  background: #ffffff;
+}
+
+.included-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+.included-columns > div + div {
+  padding-left: 2rem;
+  border-left: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.fuji-rules {
+  background: #111111;
+  color: #ffffff;
+}
+
+.rules-shell .fuji-section-heading p,
+.rules-shell .section-kicker,
+.rules-summary p,
+.document-band p,
+.cancel-table p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.rules-shell .section-kicker::before {
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.rules-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.rules-summary section {
+  padding: 1.35rem 1.2rem 1.45rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rules-summary section:last-child {
+  border-right: 0;
+}
+
+.rules-summary h3,
+.document-band h3 {
+  color: #ffffff;
+}
+
+.rules-summary p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.cancel-table {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.cancel-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.32fr);
+  gap: 1.25rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cancel-row span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cancel-row strong {
+  color: #ffffff;
+  text-align: right;
+}
+
+.cancel-head span {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.cancel-table p {
+  margin: 1rem 0 0;
+  line-height: 1.76;
+}
+
+.document-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.document-band h3 {
+  margin: 0.7rem 0 0.4rem;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.document-band .button-primary {
+  background: #ffffff;
+  color: #111111;
+  box-shadow: none;
+}
+
+.fuji-season {
+  background: #ffffff;
+}
+
+.season-months {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(17, 17, 17, 0.14);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.14);
+}
+
+.season-months span {
+  padding: 1rem 1.2rem;
+  color: var(--ink);
+  border-right: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.season-months span:last-child {
+  border-right: 0;
+}
+
+.join-copy {
+  position: sticky;
+  top: 7rem;
+}
+
+.join-copy h3 {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-size: 1.45rem;
+  line-height: 1.18;
+}
+
+.join-copy p {
+  margin: 0;
+}
+
+.join-note {
+  margin-top: 1rem !important;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(17, 17, 17, 0.12);
+}
+
+.fuji-form {
+  display: grid;
+  gap: 1.05rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-row--split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-row--split > div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  border-radius: 8px;
+  background: rgba(244, 241, 235, 0.82);
+  color: var(--ink);
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.form-row select {
+  appearance: none;
+  padding-right: 2.8rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath fill='none' stroke='%23111111' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.35' d='M1 1l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.8rem auto;
+}
+
+.form-row textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form-row input:hover,
+.form-row select:hover,
+.form-row textarea:hover,
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  background: #ffffff;
+  border-color: rgba(17, 17, 17, 0.28);
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: 0;
+  box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.06);
+}
+
+.agreement-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.72rem;
+  align-items: start;
+  color: rgba(17, 17, 17, 0.68);
+  line-height: 1.62;
+}
+
+.agreement-row input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.26rem;
+  accent-color: #111111;
+}
+
+.fuji-page .site-footer {
+  margin-top: 0;
+}
+
+@media (max-width: 1180px) {
+  .fuji-page .nav-links {
+    gap: 0.9rem;
+  }
+
+  .fuji-hero h1 {
+    font-size: 4.3rem;
+  }
+
+  .fuji-section-heading h2,
+  .statement-copy h2,
+  .join-copy h2 {
+    font-size: 2.5rem;
+  }
+
+  .rules-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rules-summary section:nth-child(2) {
+    border-right: 0;
+  }
+
+  .rules-summary section:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 1024px) {
+  .fuji-section-heading,
+  .statement-grid,
+  .join-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .fuji-section-heading .section-kicker,
+  .fuji-section-heading h2,
+  .fuji-section-heading p {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .fuji-section-heading p {
+    max-width: 42rem;
+    justify-self: stretch;
+  }
+
+  .join-copy {
+    position: static;
+  }
+
+  .fuji-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fuji-facts div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .fuji-facts div:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+  }
+
+  .route-day {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .value-lines article {
+    grid-template-columns: 4rem minmax(0, 1fr);
+  }
+
+  .value-lines p {
+    grid-column: 2;
+  }
+
+  .photo-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-tile,
+  .photo-tile:last-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .photo-tile--wide {
+    grid-column: span 2;
+  }
+
+  .photo-tile,
+  .photo-tile img {
+    min-height: 18rem;
+  }
+
+  .route-day-label strong {
+    max-width: none;
+  }
+
+  .season-months {
+    grid-template-columns: 1fr;
+  }
+
+  .season-months span,
+  .season-months span:last-child {
+    border-right: 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+  }
+
+  .season-months span:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .fuji-page .nav-toggle {
+    display: inline-flex !important;
+    position: fixed;
+    top: 1.3rem;
+    right: 1.34rem;
+    z-index: 140;
+    border-color: rgba(17, 17, 17, 0.16);
+    background: rgba(255, 255, 255, 0.96);
+    transform: none;
+  }
+
+  .fuji-hero {
+    min-height: 80svh;
+  }
+
+  .fuji-hero-shell {
+    padding: 8.2rem 0 3.2rem;
+  }
+
+  .fuji-hero h1 {
+    font-size: 2.72rem;
+    line-height: 1.02;
+  }
+
+  .fuji-hero p {
+    font-size: 1rem;
+  }
+
+  .fuji-hero-actions .button {
+    width: 100%;
+  }
+
+  .fuji-section-heading h2,
+  .statement-copy h2,
+  .join-copy h2 {
+    font-size: 2.15rem;
+  }
+
+  .fuji-facts,
+  .readiness-lists,
+  .included-columns,
+  .rules-summary,
+  .form-row--split {
+    grid-template-columns: 1fr;
+  }
+
+  .fuji-facts div,
+  .fuji-facts div:nth-child(2),
+  .rules-summary section,
+  .rules-summary section:nth-child(2),
+  .included-columns > div + div,
+  .readiness-lists > div + div {
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .fuji-facts div,
+  .fuji-facts div:nth-child(-n + 2),
+  .rules-summary section,
+  .rules-summary section:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+  }
+
+  .rules-summary section,
+  .rules-summary section:nth-child(-n + 2) {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .fuji-facts div:last-child,
+  .rules-summary section:last-child {
+    border-bottom: 0;
+  }
+
+  .readiness-lists > div + div,
+  .included-columns > div + div {
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  .route-day li,
+  .cancel-row,
+  .document-band {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-season {
+    width: 100%;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-season span + span {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .hero-season span + span::before {
+    display: none;
+  }
+
+  .value-lines article {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    padding: 1.25rem 0;
+  }
+
+  .value-lines p {
+    grid-column: auto;
+  }
+
+  .photo-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-tile--wide {
+    grid-column: auto;
+  }
+
+  .photo-tile,
+  .photo-tile:last-child {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .photo-tile:last-child {
+    border-bottom: 0;
+  }
+
+  .cancel-row strong {
+    text-align: left;
+  }
+
+  .document-band .button {
+    width: 100%;
+  }
+
+  .fuji-image-band {
+    height: 14rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fuji-hero h1 {
+    font-size: 2.42rem;
+  }
+
+  .fuji-kicker {
+    font-size: 0.68rem;
+  }
+
+  .fuji-form {
+    padding: 1rem;
+  }
+}
