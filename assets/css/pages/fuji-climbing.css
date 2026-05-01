@@ -29,11 +29,13 @@
 }
 
 .fuji-hero {
+  --fuji-hero-overlap: clamp(6.25rem, 8vw, 7.2rem);
+  --fuji-hero-bottom: clamp(2.5rem, 3.5vw, 3.35rem);
   position: relative;
-  min-height: 82svh;
-  margin-top: calc((var(--header-top-gap) + 4.2rem) * -1);
+  height: calc(100svh + var(--fuji-hero-bottom));
+  min-height: calc(100svh + var(--fuji-hero-bottom));
+  margin-top: calc(var(--fuji-hero-overlap) * -1);
   display: grid;
-  align-items: end;
   overflow: hidden;
   background: #111111;
   color: #ffffff;
@@ -46,27 +48,32 @@
   height: 100%;
   object-fit: cover;
   object-position: 56% 52%;
-  opacity: 0.96;
 }
 
 .fuji-hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.16) 38%, rgba(0, 0, 0, 0.78) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.26) 54%, rgba(0, 0, 0, 0.08) 100%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.72) 100%);
 }
 
 .fuji-hero-shell {
   position: relative;
   z-index: 1;
-  padding: 9rem 0 4.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: clamp(3rem, 4.4vw, 4rem);
 }
 
 .fuji-hero-copy {
-  width: min(46rem, 100%);
-  display: grid;
-  gap: 1.1rem;
+  width: min(56rem, 100%);
+  padding-top: clamp(6.4rem, 10vh, 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  text-align: center;
 }
 
 .fuji-hero [data-reveal] {
@@ -74,22 +81,21 @@
   transform: none;
 }
 
-.fuji-kicker {
+.fuji-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.82);
+  padding: 0.52rem 0.86rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
   font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.fuji-kicker::before {
-  content: "";
-  width: 2.4rem;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .fuji-hero h1,
@@ -110,30 +116,31 @@
 .fuji-hero h1 {
   margin: 0;
   color: #ffffff;
-  font-size: 5.2rem;
-  line-height: 0.96;
+  font-size: clamp(2.8rem, 5vw, 5.2rem);
+  line-height: 1.02;
   letter-spacing: 0.01em;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.08em;
 }
 
 .fuji-hero h1 span {
   display: block;
 }
 
-.fuji-hero h1 span + span {
-  margin-top: 0.08em;
-}
-
 .fuji-hero p {
-  max-width: 38rem;
+  max-width: 48rem;
   margin: 0;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 1.04rem;
-  line-height: 1.86;
+  font-size: clamp(1.18rem, 1.32vw, 1.38rem);
+  line-height: 1.75;
 }
 
 .hero-season {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.72rem 1rem;
   width: fit-content;
   max-width: 100%;
@@ -165,12 +172,28 @@
 .fuji-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.85rem;
-  margin-top: 0.4rem;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.fuji-hero-actions .button {
+  min-width: 11rem;
+  box-shadow: none;
+}
+
+.fuji-hero-actions .button:hover,
+.fuji-hero-actions .button:focus-visible {
+  box-shadow: none;
 }
 
 .fuji-hero-actions .button-secondary {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.fuji-hero-actions .button-primary {
+  background: #ffffff;
+  color: #111111;
 }
 
 .fuji-overview {
@@ -383,22 +406,6 @@
   color: var(--fuji-lava);
 }
 
-.fuji-image-band {
-  height: 19rem;
-  overflow: hidden;
-  background: #111111;
-}
-
-.fuji-image-band img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 48%;
-}
-
-.fuji-image-band--stones img {
-  object-position: 48% 45%;
-}
 
 .fuji-photo-sequence {
   background: #111111;
@@ -607,13 +614,27 @@
 }
 
 .document-band {
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.document-band-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1.6rem;
-  margin-top: 2.4rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.document-band-item:first-child {
+  padding-top: 0;
+}
+
+.document-band-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
 .document-band h3 {
@@ -622,9 +643,16 @@
   line-height: 1.1;
 }
 
-.document-band .button-primary {
+.document-band .button {
   background: #ffffff;
   color: #111111;
+  box-shadow: none;
+  min-width: 9rem;
+}
+
+.document-band .button:hover,
+.document-band .button:focus-visible {
+  background: rgba(255, 255, 255, 0.88);
   box-shadow: none;
 }
 
@@ -765,7 +793,7 @@
   }
 
   .fuji-hero h1 {
-    font-size: 4.3rem;
+    font-size: clamp(2.8rem, 6vw, 4.3rem);
   }
 
   .fuji-section-heading h2,
@@ -885,20 +913,17 @@
   }
 
   .fuji-hero {
-    min-height: 80svh;
+    height: auto;
+    min-height: min(80svh, 760px);
   }
 
-  .fuji-hero-shell {
-    padding: 8.2rem 0 3.2rem;
+  .fuji-hero-copy {
+    padding-top: 6.2rem;
+    padding-bottom: 2.8rem;
   }
 
   .fuji-hero h1 {
-    font-size: 2.72rem;
-    line-height: 1.02;
-  }
-
-  .fuji-hero p {
-    font-size: 1rem;
+    font-size: clamp(2.2rem, 7vw, 2.8rem);
   }
 
   .fuji-hero-actions .button {
@@ -954,7 +979,7 @@
 
   .route-day li,
   .cancel-row,
-  .document-band {
+  .document-band-item {
     grid-template-columns: 1fr;
   }
 
@@ -1004,24 +1029,12 @@
     text-align: left;
   }
 
-  .document-band .button {
+  .document-band-item .button {
     width: 100%;
-  }
-
-  .fuji-image-band {
-    height: 14rem;
   }
 }
 
 @media (max-width: 480px) {
-  .fuji-hero h1 {
-    font-size: 2.42rem;
-  }
-
-  .fuji-kicker {
-    font-size: 0.68rem;
-  }
-
   .fuji-form {
     padding: 1rem;
   }

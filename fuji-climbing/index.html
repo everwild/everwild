@@ -19,14 +19,26 @@
       </a>
 
       <div class="header-actions">
-        <nav class="nav-links" aria-label="Fuji climbing navigation" id="site-nav" data-nav-panel>
-          <a href="#overview" data-nav-link>招募</a>
-          <a href="#experience" data-nav-link>体验</a>
-          <a href="#route" data-nav-link>行程</a>
-          <a href="#readiness" data-nav-link>适合人群</a>
-          <a href="#rules" data-nav-link>规则</a>
-          <a class="nav-signup" href="#join" data-nav-link>报名</a>
+        <nav class="nav-links" aria-label="Primary navigation" id="site-nav" data-nav-panel>
+          <a href="../#brand" data-i18n="navBrand" data-nav-link>品牌</a>
+          <div class="nav-item has-dropdown">
+            <a href="../#activities" data-i18n="navActivities" data-nav-link>户外活动</a>
+            <div class="nav-dropdown">
+              <a href="./" data-i18n="navFuji" aria-current="page">2026富士山</a>
+            </div>
+          </div>
+          <a href="../#erc" data-i18n="navErc" data-nav-link>跑团</a>
+          <a href="../#ws" data-i18n="navWs" data-nav-link>训练</a>
+          <a href="../#media" data-i18n="navMedia" data-nav-link>内容</a>
+          <a href="../#about" data-i18n="navAbout" data-nav-link>关于我们</a>
+          <a class="nav-signup" href="#join" data-i18n="navJoin" data-nav-link>加入</a>
         </nav>
+
+        <div class="lang-toggle" aria-label="Language switcher">
+          <button type="button" data-lang-toggle="ja" aria-pressed="false">JA</button>
+          <button type="button" data-lang-toggle="en" aria-pressed="false">EN</button>
+          <button type="button" class="is-active" data-lang-toggle="zh" aria-pressed="true">CN</button>
+        </div>
 
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
           <span></span>
@@ -44,7 +56,6 @@
       <div class="fuji-hero-overlay" aria-hidden="true"></div>
       <div class="shell fuji-hero-shell">
         <div class="fuji-hero-copy" data-reveal>
-          <span class="fuji-kicker">2026 年・富士山登山季招募正式开启</span>
           <h1 id="hero-title">
             <span>2026 年富士山</span>
             <span>登山招募</span>
@@ -309,18 +320,22 @@
         </div>
 
         <div class="document-band" data-reveal>
-          <div>
-            <span class="section-kicker">Document</span>
-            <h3>富士山活动规则及同意书</h3>
-            <p>请在正式报名与付款前阅读。若页面摘要与正式文件不一致，以正式文件和最终出团说明为准。</p>
+          <div class="document-band-item">
+            <div>
+              <h3>EVERWILD极野旅行规则</h3>
+              <p>适用于所有EVERWILD旅行产品的合同条款与取消政策，包含中英日三语版本。</p>
+            </div>
+            <a class="button button-secondary" href="../travel-rules/">查看旅行规则</a>
           </div>
-          <a class="button button-primary" href="../assets/docs/fuji-consent.docx" download>下载同意书 <span aria-hidden="true">↓</span></a>
+          <div class="document-band-item">
+            <div>
+              <h3>富士山活动规则及同意书</h3>
+              <p>请在正式报名与付款前阅读。若页面摘要与正式文件不一致，以正式文件和最终出团说明为准。</p>
+            </div>
+            <a class="button button-secondary" href="../fuji-consent/">查看同意书</a>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section class="fuji-image-band fuji-image-band--stones" aria-label="富士山火山石路面">
-      <img src="../assets/images/fuji-climbing/fuji-stones.jpg" alt="富士山火山石路面与蝴蝶">
     </section>
 
     <section class="fuji-season section" id="season">
@@ -448,6 +463,8 @@
     </div>
   </footer>
 
+  <script src="../assets/js/shared/site-i18n.js"></script>
+  <script src="../assets/js/content/nav-copy.js"></script>
   <script src="../assets/js/pages/fuji-climbing.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+if (window.createSiteI18n && window.EVERWILD_NAV_COPY) {
+  window.createSiteI18n({ copy: window.EVERWILD_NAV_COPY });
+}
+
 const header = document.querySelector("[data-site-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
