@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <style>html[data-i18n-cloak] body{visibility:hidden}</style>
   <script>(function(){try{var v=localStorage.getItem("site-language");if(v&&v!=="zh")document.documentElement.setAttribute("data-i18n-cloak","");}catch(e){}})();</script>
   <meta name="description" content="EVERWILD 极野品牌矩阵主网页，整合户外活动、训练体系、跑团社群与内容媒体。">
@@ -576,32 +576,42 @@
             <p data-i18n="joinFormBody">Share your current interest, training background, or travel goal and we will guide you to the most suitable entry.</p>
           </div>
 
-          <form class="contact-form" data-contact-email="everwild.global@gmail.com">
+          <form id="everwild-home-inquiry" class="contact-form" action="https://formspree.io/f/xjglkzwd" method="POST">
+            <div class="form-fs-msg form-fs-msg--error" data-fs-error role="alert"></div>
+
+            <input type="hidden" name="form_source" value="EVERWILD Home">
+            <input type="hidden" name="_subject" value="EVERWILD | Home inquiry">
+            <input type="hidden" name="_gotcha" value="">
+
             <div class="form-row">
               <label for="name" data-i18n="formNameLabel">Name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required data-i18n-placeholder="formNamePlaceholder" placeholder="Your name">
+              <input id="name" name="name" type="text" autocomplete="name" required data-i18n-placeholder="formNamePlaceholder" placeholder="Your name" data-fs-field>
+              <span class="form-field-error" data-fs-error="name"></span>
             </div>
 
             <div class="form-row">
               <label for="contact" data-i18n="formContactLabel">Contact</label>
-              <input id="contact" name="contact" type="text" required data-i18n-placeholder="formContactPlaceholder" placeholder="Email / WeChat / LINE">
+              <input id="contact" name="contact" type="text" required data-i18n-placeholder="formContactPlaceholder" placeholder="Email / WeChat / LINE" data-fs-field>
+              <span class="form-field-error" data-fs-error="contact"></span>
             </div>
 
             <div class="form-row">
               <label for="interest" data-i18n="formInterestLabel">Interest</label>
-              <select id="interest" name="interest">
+              <select id="interest" name="interest" data-fs-field>
                 <option value="activities" data-i18n="formOptionActivities">Activities</option>
                 <option value="erc" data-i18n="formOptionErc">ERC</option>
                 <option value="ws" data-i18n="formOptionWs">WILD SPACE</option>
               </select>
+              <span class="form-field-error" data-fs-error="interest"></span>
             </div>
 
             <div class="form-row">
               <label for="message" data-i18n="formMessageLabel">Message</label>
-              <textarea id="message" name="message" rows="5" required data-i18n-placeholder="formMessagePlaceholder" placeholder="Tell us what you are aiming for."></textarea>
+              <textarea id="message" name="message" rows="5" required data-i18n-placeholder="formMessagePlaceholder" placeholder="Tell us what you are aiming for." data-fs-field></textarea>
+              <span class="form-field-error" data-fs-error="message"></span>
             </div>
 
-            <button class="button button-primary button-block" type="submit" data-i18n="formSubmit">Send Inquiry</button>
+            <button class="button button-primary button-block" type="submit" data-fs-submit-btn data-i18n="formSubmit">Send Inquiry</button>
           </form>
         </div>
       </div>
@@ -648,5 +658,10 @@
   <script src="./assets/js/content/nav-copy.js"></script>
   <script src="./assets/js/content/home-copy.js"></script>
   <script src="./assets/js/pages/home.js"></script>
+  <script src="./assets/js/shared/formspree-everwild.js"></script>
+  <script>
+    initEverwildFormspree({ formElement: "#everwild-home-inquiry", formId: "xjglkzwd" });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>

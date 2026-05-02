@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <style>html[data-i18n-cloak] body{visibility:hidden}</style>
   <script>(function(){try{var v=localStorage.getItem("site-language");if(v&&v!=="zh")document.documentElement.setAttribute("data-i18n-cloak","");}catch(e){}})();</script>
   <meta name="description" content="2026 年 EVERWILD 极野富士山登山季招募，面向真正想走进富士山的朋友，说明开放季、双语向导、富士山讲解、适合人群、规则与报名方式。">
@@ -392,66 +392,79 @@
             <p class="join-note" data-i18n="joinCopyNote">如果你不确定是否适合参加，也可以在备注里写下体能、经验和顾虑。</p>
           </div>
 
-          <form class="fuji-form" data-fuji-form data-contact-email="everwild.global@gmail.com" data-reveal>
+          <form id="everwild-fuji-inquiry" class="fuji-form" data-fuji-form action="https://formspree.io/f/mgodvqzy" method="POST" data-reveal>
+            <div class="form-fs-msg form-fs-msg--error" data-fs-error role="alert"></div>
+
+            <input type="hidden" name="form_source" value="EVERWILD Fuji">
+            <input type="hidden" name="_subject" value="EVERWILD | Fuji 2026 inquiry">
+            <input type="hidden" name="_gotcha" value="">
+
             <div class="form-row">
               <label for="fuji-name" data-i18n="fLabelName">姓名</label>
               <input id="fuji-name" name="name" type="text" autocomplete="name" required
                      data-i18n-placeholder="fPlaceholderName"
-                     placeholder="你的姓名">
+                     placeholder="你的姓名" data-fs-field>
+              <span class="form-field-error" data-fs-error="name"></span>
             </div>
 
             <div class="form-row">
               <label for="fuji-contact" data-i18n="fLabelContact">联系方式</label>
               <input id="fuji-contact" name="contact" type="text" required
                      data-i18n-placeholder="fPlaceholderContact"
-                     placeholder="Email / WeChat / LINE / 电话 / 私信账号">
+                     placeholder="Email / WeChat / LINE / 电话 / 私信账号" data-fs-field>
+              <span class="form-field-error" data-fs-error="contact"></span>
             </div>
 
             <div class="form-row form-row--split">
               <div>
                 <label for="fuji-participants" data-i18n="fLabelParticipants">参加人数</label>
-                <select id="fuji-participants" name="participants">
+                <select id="fuji-participants" name="participants" data-fs-field>
                   <option value="1 名" data-i18n="fOpt1">1 名</option>
                   <option value="2 名" data-i18n="fOpt2">2 名</option>
                   <option value="3 名" data-i18n="fOpt3">3 名</option>
                   <option value="4 名" data-i18n="fOpt4">4 名</option>
                   <option value="5 名以上" data-i18n="fOpt5">5 名以上</option>
                 </select>
+                <span class="form-field-error" data-fs-error="participants"></span>
               </div>
               <div>
                 <label for="fuji-month" data-i18n="fLabelMonth">希望月份</label>
-                <select id="fuji-month" name="month">
+                <select id="fuji-month" name="month" data-fs-field>
                   <option value="7 月" data-i18n="fOptJuly">7 月</option>
                   <option value="8 月" data-i18n="fOptAug">8 月</option>
                   <option value="9 月 1 日 - 9 月 10 日" data-i18n="fOptSep">9 月 1 日 - 9 月 10 日</option>
                   <option value="尚未确定" data-i18n="fOptUndecided">尚未确定</option>
                 </select>
+                <span class="form-field-error" data-fs-error="month"></span>
               </div>
             </div>
 
             <div class="form-row">
               <label for="fuji-experience" data-i18n="fLabelExperience">登山 / 徒步经验</label>
-              <select id="fuji-experience" name="experience">
+              <select id="fuji-experience" name="experience" data-fs-field>
                 <option value="有高山或长距离徒步经验" data-i18n="fOptExpHigh">有高山或长距离徒步经验</option>
                 <option value="有基础徒步经验" data-i18n="fOptExpBasic">有基础徒步经验</option>
                 <option value="主要是跑步或其他耐力运动" data-i18n="fOptExpRun">主要是跑步或其他耐力运动</option>
                 <option value="经验较少，需要先咨询" data-i18n="fOptExpLimited">经验较少，需要先咨询</option>
               </select>
+              <span class="form-field-error" data-fs-error="experience"></span>
             </div>
 
             <div class="form-row">
               <label for="fuji-message" data-i18n="fLabelMessage">备注</label>
               <textarea id="fuji-message" name="message" rows="5"
                         data-i18n-placeholder="fPlaceholderMessage"
-                        placeholder="可写「富士山」以及希望日期、同行者情况、装备问题、体能顾虑等"></textarea>
+                        placeholder="可写「富士山」以及希望日期、同行者情况、装备问题、体能顾虑等" data-fs-field></textarea>
+              <span class="form-field-error" data-fs-error="message"></span>
             </div>
 
             <label class="agreement-row">
-              <input type="checkbox" name="agreement" required>
+              <input type="checkbox" name="agreement" value="confirmed" required data-fs-field>
               <span data-i18n="fAgreement">我理解需在正式报名时阅读并确认《富士山活动规则及同意书》。</span>
             </label>
+            <span class="form-field-error agreement-field-error" data-fs-error="agreement"></span>
 
-            <button class="button button-primary button-block" type="submit" data-i18n-html="fSubmit">获取详细行程与报价 <span aria-hidden="true">→</span></button>
+            <button class="button button-primary button-block" type="submit" data-fs-submit-btn data-i18n-html="fSubmit">获取详细行程与报价 <span aria-hidden="true">→</span></button>
           </form>
         </div>
       </div>
@@ -498,5 +511,10 @@
   <script src="../assets/js/content/fuji-copy.js"></script>
   <script src="../assets/js/shared/site-nav.js"></script>
   <script src="../assets/js/pages/fuji-climbing.js"></script>
+  <script src="../assets/js/shared/formspree-everwild.js"></script>
+  <script>
+    initEverwildFormspree({ formElement: "#everwild-fuji-inquiry", formId: "mgodvqzy" });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>

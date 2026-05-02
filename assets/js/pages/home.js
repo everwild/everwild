@@ -2,15 +2,12 @@ const copy = window.EVERWILD_HOME_COPY || {};
 
 const header = document.querySelector("[data-site-header]");
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
-const staticForm = document.querySelector(".contact-form");
 const placeholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
 const originalPlaceholders = new Map(placeholderNodes.map((node) => [node, node.getAttribute("placeholder") || ""]));
-let currentBundle = copy.zh;
 
 createSiteI18n({
   copy,
   onApply: ({ bundle }) => {
-    currentBundle = bundle;
     placeholderNodes.forEach((node) => {
       const key = node.dataset.i18nPlaceholder;
       node.setAttribute("placeholder", key in bundle ? bundle[key] : (originalPlaceholders.get(node) || ""));
@@ -115,40 +112,6 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll("[data-reveal]").forEach((node) => revealObserver.observe(node));
 } else {
   document.querySelectorAll("[data-reveal]").forEach((node) => node.classList.add("is-visible"));
-}
-
-if (staticForm) {
-  staticForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!staticForm.reportValidity()) {
-      return;
-    }
-
-    const formData = new FormData(staticForm);
-    const name = String(formData.get("name") || "").trim();
-    const contact = String(formData.get("contact") || "").trim();
-    const interest = String(formData.get("interest") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-    const optionLabel = staticForm.querySelector(`option[value="${interest}"]`)?.textContent?.trim() || interest;
-    const targetEmail = staticForm.dataset.contactEmail || "everwild.global@gmail.com";
-    const subject = ["EVERWILD", optionLabel, name || contact].filter(Boolean).join(" / ");
-    const labels = {
-      name: currentBundle?.formNameLabel || "Name",
-      contact: currentBundle?.formContactLabel || "Contact",
-      interest: currentBundle?.formInterestLabel || "Interest",
-      message: currentBundle?.formMessageLabel || "Message"
-    };
-    const body = [
-      `${labels.name}: ${name}`,
-      `${labels.contact}: ${contact}`,
-      `${labels.interest}: ${optionLabel}`,
-      `${labels.message}:`,
-      message
-    ].join("\n");
-
-    window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
 }
 
 window.addEventListener("scroll", scheduleScrollSync, { passive: true });

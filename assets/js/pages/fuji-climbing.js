@@ -33,7 +33,6 @@ if (window.createSiteI18n && window.EVERWILD_FUJI_COPY) {
 /* ── Header & nav ── */
 const header   = document.querySelector("[data-site-header]");
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
-const fujiForm = document.querySelector("[data-fuji-form]");
 
 const syncHeader = () => {
   syncSiteHeaderScrolled(header);
@@ -107,44 +106,6 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll("[data-reveal]").forEach((node) => revealObserver.observe(node));
 } else {
   document.querySelectorAll("[data-reveal]").forEach((node) => node.classList.add("is-visible"));
-}
-
-/* ── Form submission → mailto ── */
-if (fujiForm) {
-  fujiForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!fujiForm.reportValidity()) return;
-
-    const data         = new FormData(fujiForm);
-    const targetEmail  = fujiForm.dataset.contactEmail || "everwild.global@gmail.com";
-    const name         = String(data.get("name")         || "").trim();
-    const contact      = String(data.get("contact")      || "").trim();
-    const participants = String(data.get("participants") || "").trim();
-    const month        = String(data.get("month")        || "").trim();
-    const experience   = String(data.get("experience")   || "").trim();
-    const message      = String(data.get("message")      || "").trim();
-
-    const subject = ["2026 EVERWILD 富士山登山招募", month, name || contact]
-      .filter(Boolean).join(" / ");
-
-    const body = [
-      "2026 EVERWILD 富士山登山报名意向",
-      "",
-      `姓名：${name}`,
-      `联系方式：${contact}`,
-      `参加人数：${participants}`,
-      `希望月份：${month}`,
-      `登山 / 徒步经验：${experience}`,
-      "",
-      "备注：",
-      message || "无",
-      "",
-      `页面：${window.location.href}`
-    ].join("\n");
-
-    window.location.href =
-      `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
 }
 
 window.addEventListener("scroll", scheduleScrollSync, { passive: true });

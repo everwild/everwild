@@ -142,6 +142,7 @@ body {
   color: var(--ink);
   background: #fbfaf8;
   min-width: 320px;
+  overflow-x: clip;
 }
 
 body::before {
@@ -199,7 +200,7 @@ textarea::placeholder {
 
 .site-header {
   position: sticky;
-  top: var(--header-top-gap);
+  top: max(var(--header-top-gap), env(safe-area-inset-top, 0px));
   z-index: 100;
   padding: 0;
   background: transparent;
@@ -756,7 +757,7 @@ html[lang^="ja"] .nav-signup {
 
 .site-footer {
   margin-top: 1rem;
-  padding: 2rem 0 2.8rem;
+  padding: 2rem 0 calc(2.8rem + env(safe-area-inset-bottom, 0px));
   background: #090909;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -958,6 +959,13 @@ html[lang^="ja"] .nav-signup {
     font-size: 16.25px;
   }
 
+  /* iOS：输入框折算字号小于 16px 时聚焦会强制缩放页面 */
+  input:not([type="hidden"]),
+  select,
+  textarea {
+    font-size: max(1rem, 16px);
+  }
+
   .site-header .shell {
     min-height: calc(var(--header-control-height) + (var(--header-shell-padding-y) * 2) + 0.48rem);
   }
@@ -1003,8 +1011,10 @@ html[lang^="ja"] .nav-signup {
   }
 
   .nav-toggle {
-    width: 2.62rem;
-    height: 2.62rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 
@@ -1022,6 +1032,94 @@ html[lang^="ja"] .nav-signup {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Formspree：未报错时不占位（避免空提示区被当成一条「框」；与 data-fs-active 配合） */
+[data-fs-error]:not([data-fs-active]) {
+  display: none !important;
+}
+
+[data-fs-error][data-fs-active] {
+  display: block;
+}
+
+.form-fs-msg {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-card, 12px);
+}
+
+.form-fs-msg:empty {
+  display: none;
+}
+
+.form-fs-msg--error {
+  background: rgba(180, 60, 50, 0.1);
+  color: #6b2a24;
+}
+
+.form-field-error {
+  display: block;
+  font-size: 0.82rem;
+  margin-top: 0.35rem;
+  color: #8b2e26;
+  min-height: 1.1em;
+}
+
+.form-field-error:empty {
+  display: none;
+  min-height: 0;
+  margin: 0;
+}
+
+.agreement-field-error {
+  margin-top: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Formspree 成功弹层（由 formspree-everwild.js 控制） */
+.form-success-toast-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(20, 18, 16, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.form-success-toast-backdrop.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.form-success-toast {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10001;
+  max-width: min(92vw, 22rem);
+  margin: 0;
+  padding: 1.35rem 1.6rem;
+  background: #faf8f4;
+  color: #1f1c18;
+  border-radius: var(--radius-card, 12px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+}
+
+.form-success-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* === everwild: home === */

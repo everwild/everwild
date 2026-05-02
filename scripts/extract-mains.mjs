@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
-const outDir = path.join(root, "src/mains");
+const outDir = path.join(root, "content/mains");
 fs.mkdirSync(outDir, { recursive: true });
 
 const pages = [
@@ -26,5 +26,5 @@ for (const [rel, name] of pages) {
   }
 
   fs.writeFileSync(path.join(outDir, name), `${m[0]}\n`);
-  console.log("extracted", rel, "->", path.join("src/mains", name));
+  console.log("extracted", rel, "->", path.join("content/mains", name));
 }

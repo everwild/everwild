@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 
-const SKIP_DIRS = new Set(["templates", "src", "node_modules", "backup", ".git"]);
+const SKIP_DIRS = new Set(["templates", "content", "node_modules", "backup", ".git"]);
 
 function walkHtmlFiles(dir, acc = []) {
   const rel = path.relative(root, dir);

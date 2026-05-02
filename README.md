@@ -1,20 +1,32 @@
 # EVERWILD 极野 · 静态站点
 
-多页静态站点（首页、富士招募、法务与条款、旅行规则与同意书等）。页面由 **模板 + 正文片段** 生成，样式由 **分文件源码** 合并为单文件 CSS，便于缓存与部署。
+多页静态站点（首页、富士招募、法务与条款、旅行规则与同意书等）。页面由 **模板 + 正文片段** 生成，样式由 **分文件 CSS 源码** 合并为 `site.css`，便于缓存与部署。
 
-## 目录约定
+## 目录结构（仓库根）
 
-| 路径 | 说明 |
-|------|------|
-| `templates/` | HTML 外壳（`document-shell.html`）与公共片段（`partials/`） |
-| `src/mains/` | 各页 `<main>...</main>` 正文片段（构建输出会拼进根目录 HTML） |
-| `assets/css/shared/`、`assets/css/pages/` | 样式源码 |
-| `assets/css/site.css` | **`npm run build:css` 生成**，勿手改 |
-| `assets/js/` | 脚本：`shared/`（导航、i18n）、`content/`（文案）、`pages/`（页逻辑） |
+```
+everwild/
+├── content/mains/          # 各页 <main> 正文源码（改这里后 npm run build:html）
+├── templates/              # HTML 外壳与 header/footer 片段
+├── scripts/                # build-css / build-html / extract-mains / check-links
+├── assets/
+│   ├── css/
+│   │   ├── shared/site-core.css    # 全局样式源码
+│   │   ├── pages/*.css             # 按页拆分样式源码
+│   │   └── site.css                # npm run build:css 生成（勿手改）
+│   ├── js/content/         # 文案（nav-copy、home-copy、fuji-copy）
+│   ├── js/shared/          # site-i18n、site-nav
+│   ├── js/pages/           # 各页入口脚本
+│   ├── images/、fonts/     # 静态资源
+├── docs/                   # 说明文档（ASSETS、子页说明）
+├── index.html              # 及各子目录 index.html（均由构建生成）
+├── package.json
+└── README.md
+```
 
 ## 导航文案（单一数据源）
 
-导航相关 key 仅在 **`assets/js/content/nav-copy.js`**（`EVERWILD_NAV_COPY` + `mergeNavIntoCopy`）。首页 / 富士 / 法务等页面的完整文案对象会在运行时合并导航字段，避免多处手写漂移。
+导航相关 key 仅在 **`assets/js/content/nav-copy.js`**（`EVERWILD_NAV_COPY` + `mergeNavIntoCopy`）。其他页面的文案对象会在运行时合并导航字段。
 
 ## 常用命令
 
@@ -23,30 +35,26 @@ npm install
 npm run build
 ```
 
-- **`npm run build:css`**：合并 `shared/site-core.css` + `pages/*.css` → `assets/css/site.css`（并修正字体路径）。
-- **`npm run build:html`**：根据 `templates/` + `src/mains/*.html` 生成根目录及各子目录 `index.html`。
-- **`npm run extract:mains`**：从 **当前** 根目录 HTML 抽取 `<main>` 写回 `src/mains/`（调整正文后若需反向同步可运行；会覆盖对应 `src/mains` 文件）。
-- **`npm run check:links`**：检查 HTML 内相对资源是否存在。
+| 命令 | 作用 |
+|------|------|
+| `npm run build:css` | 合并 CSS → `assets/css/site.css` |
+| `npm run build:html` | 合并模板 + `content/mains/*.html` → 根目录及各子目录 `index.html` |
+| `npm run extract:mains` | 从当前已生成的 HTML 抽取 `<main>` 写回 `content/mains/`（会覆盖） |
+| `npm run check:links` | 检查站点 HTML 内相对资源是否存在 |
 
 ## 本地预览
-
-在项目根目录：
 
 ```bash
 npx --yes serve .
 ```
 
-或使用 Python：
+或 `python -m http.server 8080`。
 
-```bash
-python -m http.server 8080
-```
+## 修改流程
 
-## 修改流程建议
+1. **样式**：改 `assets/css/shared/` 或 `pages/*.css` → `npm run build:css`。
+2. **顶栏 / 页脚 / head**：改 `templates/` 或 `scripts/build-html.mjs` → `npm run build:html`。
+3. **正文**：改 `content/mains/` 下对应文件 → `npm run build:html`。
+4. **导航翻译**：只改 `assets/js/content/nav-copy.js`。
 
-1. **改样式**：编辑 `assets/css/shared/site-core.css` 或 `assets/css/pages/*.css`，再执行 `npm run build:css`。
-2. **改顶栏/页脚/head**：编辑 `templates/` 下片段或 `scripts/build-html.mjs` 中的页面配置，再 `npm run build:html`。
-3. **改正文**：编辑 `src/mains/` 下对应文件，再 `npm run build:html`。
-4. **改导航翻译**：只改 `nav-copy.js`，必要时 `npm run build:html`（HTML 无需变也可跳过）。
-
-更多资源说明见 [`docs/ASSETS.md`](docs/ASSETS.md)。
+更多见 **[docs/README.md](docs/README.md)** 与 **[docs/ASSETS.md](docs/ASSETS.md)**。

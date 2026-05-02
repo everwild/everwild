@@ -45,7 +45,12 @@ const pages = [
   <script src="./assets/js/shared/site-i18n.js"></script>
   <script src="./assets/js/content/nav-copy.js"></script>
   <script src="./assets/js/content/home-copy.js"></script>
-  <script src="./assets/js/pages/home.js"></script>`
+  <script src="./assets/js/pages/home.js"></script>
+  <script src="./assets/js/shared/formspree-everwild.js"></script>
+  <script>
+    initEverwildFormspree({ formElement: "#everwild-home-inquiry", formId: "xjglkzwd" });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>`
   },
   {
     out: "fuji-climbing/index.html",
@@ -65,7 +70,12 @@ const pages = [
   <script src="../assets/js/content/nav-copy.js"></script>
   <script src="../assets/js/content/fuji-copy.js"></script>
   <script src="../assets/js/shared/site-nav.js"></script>
-  <script src="../assets/js/pages/fuji-climbing.js"></script>`
+  <script src="../assets/js/pages/fuji-climbing.js"></script>
+  <script src="../assets/js/shared/formspree-everwild.js"></script>
+  <script>
+    initEverwildFormspree({ formElement: "#everwild-fuji-inquiry", formId: "mgodvqzy" });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>`
   },
   {
     out: "legal/index.html",
@@ -177,7 +187,7 @@ const pages = [
 ];
 
 for (const page of pages) {
-  const mainPath = path.join(root, "src/mains", page.mainFile);
+  const mainPath = path.join(root, "content/mains", page.mainFile);
   const main = fs.readFileSync(mainPath, "utf8").trimEnd();
 
   const headerVars = {
