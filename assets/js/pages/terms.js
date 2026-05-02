@@ -1,14 +1,6 @@
 const copy = {
   zh: {
     pageTitle: "EVERWILD · 使用条款",
-    navBrand: "品牌",
-    navActivities: "户外活动",
-    navFuji: "2026富士山",
-    navErc: "跑团",
-    navWs: "训练",
-    navMedia: "内容",
-    navAbout: "关于我们",
-    navJoin: "加入",
     kicker: "使用条款",
     title: "使用条款",
     intro: "本条款适用于你访问本网站、阅读活动信息、使用报名入口以及通过网站进行联络时的基础使用规则。",
@@ -41,14 +33,6 @@ const copy = {
   },
   ja: {
     pageTitle: "EVERWILD · 利用規約",
-    navBrand: "ブランド",
-    navActivities: "アウトドア",
-    navFuji: "2026富士山",
-    navErc: "ランニングクラブ",
-    navWs: "トレーニング",
-    navMedia: "コンテンツ",
-    navAbout: "私たちについて",
-    navJoin: "参加",
     kicker: "利用規約",
     title: "利用規約",
     intro: "本規約は、当サイトへのアクセス、活動情報の閲覧、申込導線の利用、および当サイトを通じた連絡に適用される基本的な利用条件を定めるものです。",
@@ -81,14 +65,6 @@ const copy = {
   },
   en: {
     pageTitle: "EVERWILD · Terms of Use",
-    navBrand: "Brand",
-    navActivities: "Outdoor Activities",
-    navFuji: "2026 Mount Fuji",
-    navErc: "Running Club",
-    navWs: "Training",
-    navMedia: "Content",
-    navAbout: "About Us",
-    navJoin: "Join",
     kicker: "Terms of Use",
     title: "Terms of Use",
     intro: "These terms apply when you access the website, read event information, use the signup entry point, or contact us through the site.",
@@ -120,5 +96,9 @@ const copy = {
     footerTerms: "Terms of Use"
   }
 };
+
+if (typeof window.mergeNavIntoCopy === "function") {
+  window.mergeNavIntoCopy(copy);
+}
 
 createSiteI18n({ copy });

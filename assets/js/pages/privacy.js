@@ -1,14 +1,6 @@
 const copy = {
   zh: {
     pageTitle: "EVERWILD · 隐私政策",
-    navBrand: "品牌",
-    navActivities: "户外活动",
-    navFuji: "2026富士山",
-    navErc: "跑团",
-    navWs: "训练",
-    navMedia: "内容",
-    navAbout: "关于我们",
-    navJoin: "加入",
     kicker: "隐私政策",
     title: "隐私政策",
     intro: "本政策说明我们会收集哪些信息、如何使用这些信息，以及你可以如何提出更正或删除请求。",
@@ -50,14 +42,6 @@ const copy = {
   },
   ja: {
     pageTitle: "EVERWILD · プライバシーポリシー",
-    navBrand: "ブランド",
-    navActivities: "アウトドア",
-    navFuji: "2026富士山",
-    navErc: "ランニングクラブ",
-    navWs: "トレーニング",
-    navMedia: "コンテンツ",
-    navAbout: "私たちについて",
-    navJoin: "参加",
     kicker: "プライバシーポリシー",
     title: "プライバシーポリシー",
     intro: "本ポリシーでは、当サイトが取得する情報、その利用目的、および訂正・削除等のご依頼方法について説明します。",
@@ -99,14 +83,6 @@ const copy = {
   },
   en: {
     pageTitle: "EVERWILD · Privacy Policy",
-    navBrand: "Brand",
-    navActivities: "Outdoor Activities",
-    navFuji: "2026 Mount Fuji",
-    navErc: "Running Club",
-    navWs: "Training",
-    navMedia: "Content",
-    navAbout: "About Us",
-    navJoin: "Join",
     kicker: "Privacy Policy",
     title: "Privacy Policy",
     intro: "This policy explains what information we may collect, how it is used, and how you may request correction or deletion.",
@@ -147,5 +123,9 @@ const copy = {
     footerTerms: "Terms of Use"
   }
 };
+
+if (typeof window.mergeNavIntoCopy === "function") {
+  window.mergeNavIntoCopy(copy);
+}
 
 createSiteI18n({ copy });

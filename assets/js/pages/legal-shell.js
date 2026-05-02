@@ -1,3 +1,11 @@
+if (
+  document.body.dataset.shell === "nav-only" &&
+  window.createSiteI18n &&
+  window.EVERWILD_NAV_COPY
+) {
+  window.createSiteI18n({ copy: window.EVERWILD_NAV_COPY });
+}
+
 const legalHeader = document.querySelector("[data-site-header]");
 const legalNavLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
 

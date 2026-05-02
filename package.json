@@ -1,0 +1,11 @@
+{
+  "name": "everwild-site",
+  "private": true,
+  "scripts": {
+    "build:css": "node scripts/build-css.mjs",
+    "extract:mains": "node scripts/extract-mains.mjs",
+    "build:html": "node scripts/build-html.mjs",
+    "build": "npm run build:css && npm run build:html",
+    "check:links": "node scripts/check-links.mjs"
+  }
+}

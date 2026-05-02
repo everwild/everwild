@@ -4,16 +4,6 @@ window.EVERWILD_FUJI_COPY = {
     pageTitle:        "2026 年富士山登山招募 · EVERWILD 极野",
     metaDesc:         "2026 年 EVERWILD 极野富士山登山季招募，面向真正想走进富士山的朋友，说明开放季、双语向导、富士山讲解、适合人群、规则与报名方式。",
 
-    /* ── Nav ── */
-    navBrand:         "品牌",
-    navActivities:    "户外活动",
-    navFuji:          "2026富士山",
-    navErc:           "跑团",
-    navWs:            "训练",
-    navMedia:         "内容",
-    navAbout:         "关于我们",
-    navJoin:          "加入",
-
     /* ── Hero ── */
     heroImgAlt:          "富士山山体与蓝色天空",
     heroTitle:           "<span>2026 年富士山</span><span>登山招募</span>",
@@ -185,16 +175,6 @@ window.EVERWILD_FUJI_COPY = {
     /* ── Meta ── */
     pageTitle: "2026年富士山登山ツアー募集 · EVERWILD 極野",
     metaDesc:  "2026年 EVERWILD 極野 富士山登山シーズン参加者募集。富士山を真剣に経験したい方のための小グループ制登山ツアー。双語向导・富士山解説・ペース管理・安全管理。",
-
-    /* ── Nav ── */
-    navBrand:      "ブランド",
-    navActivities: "アウトドア",
-    navFuji:       "2026富士山",
-    navErc:        "ランニングクラブ",
-    navWs:         "トレーニング",
-    navMedia:      "コンテンツ",
-    navAbout:      "私たちについて",
-    navJoin:       "参加",
 
     /* ── Hero ── */
     heroImgAlt:          "富士山と青空",
@@ -368,16 +348,6 @@ window.EVERWILD_FUJI_COPY = {
     pageTitle: "2026 Mount Fuji Climbing Expedition · EVERWILD",
     metaDesc:  "2026 EVERWILD Mount Fuji Climbing Season — now open. A small-group mountaineering experience for those who want to genuinely walk into Mount Fuji. Bilingual guide, Fuji interpretation, pace management, and safety.",
 
-    /* ── Nav ── */
-    navBrand:      "Brand",
-    navActivities: "Outdoor Activities",
-    navFuji:       "2026 Mount Fuji",
-    navErc:        "Running Club",
-    navWs:         "Training",
-    navMedia:      "Content",
-    navAbout:      "About Us",
-    navJoin:       "Join",
-
     /* ── Hero ── */
     heroImgAlt:          "Mount Fuji with blue sky",
     heroTitle:           "<span>Mount Fuji 2026</span><span>Climbing Expedition</span>",
@@ -544,3 +514,8 @@ window.EVERWILD_FUJI_COPY = {
     footerTerms: "Terms of Use"
   }
 };
+
+if (typeof window.mergeNavIntoCopy === "function") {
+  window.mergeNavIntoCopy(window.EVERWILD_FUJI_COPY);
+}
+

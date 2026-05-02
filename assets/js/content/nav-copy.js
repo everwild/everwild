@@ -63,3 +63,36 @@ window.EVERWILD_NAV_COPY = {
     footerTerms: "Terms of Use"
   }
 };
+
+const EVERWILD_NAV_I18N_KEYS = [
+  "navBrand",
+  "navActivities",
+  "navFuji",
+  "navErc",
+  "navWs",
+  "navMedia",
+  "navAbout",
+  "navJoin"
+];
+
+window.mergeNavIntoCopy = (copyBundle) => {
+  if (!copyBundle || !window.EVERWILD_NAV_COPY) {
+    return copyBundle;
+  }
+
+  for (const lang of Object.keys(copyBundle)) {
+    const navLang = window.EVERWILD_NAV_COPY[lang];
+    const target = copyBundle[lang];
+    if (!navLang || !target) {
+      continue;
+    }
+
+    for (const key of EVERWILD_NAV_I18N_KEYS) {
+      if (Object.prototype.hasOwnProperty.call(navLang, key)) {
+        target[key] = navLang[key];
+      }
+    }
+  }
+
+  return copyBundle;
+};

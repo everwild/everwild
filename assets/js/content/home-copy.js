@@ -1,14 +1,6 @@
 window.EVERWILD_HOME_COPY = {
   zh: {
     pageTitle: "EVERWILD 极野",
-    navBrand: "品牌",
-    navActivities: "户外活动",
-    navFuji: "2026富士山",
-    navErc: "跑团",
-    navWs: "训练",
-    navMedia: "内容",
-    navAbout: "关于我们",
-    navJoin: "加入",
     heroTitle: "<span class=\"hero-line\">从东京到山野</span>",
     heroBody: "从城市训练出发，把山野、远行与同路人，接进一种更长期的户外节奏。",
     heroCtaActivities: "户外",
@@ -230,14 +222,6 @@ window.EVERWILD_HOME_COPY = {
   },
   ja: {
     pageTitle: "EVERWILD",
-    navBrand: "ブランド",
-    navActivities: "アウトドア",
-    navFuji: "2026富士山",
-    navErc: "ランニングクラブ",
-    navWs: "トレーニング",
-    navMedia: "コンテンツ",
-    navAbout: "私たちについて",
-    navJoin: "参加",
     heroTitle: "<span class=\"hero-line\">東京から山へ</span>",
     heroBody: "都市で鍛え、山へ向かい、また戻ってくる。EVERWILD はその長いアウトドアのリズムをつくります。",
     heroCtaActivities: "アクティビティ",
@@ -459,14 +443,6 @@ window.EVERWILD_HOME_COPY = {
   },
   en: {
     pageTitle: "EVERWILD",
-    navBrand: "Brand",
-    navActivities: "Outdoor Activities",
-    navFuji: "2026 Mount Fuji",
-    navErc: "Running Club",
-    navWs: "Training",
-    navMedia: "Content",
-    navAbout: "About Us",
-    navJoin: "Join",
     heroTitle: "<span class=\"hero-line\">From Tokyo to the Wilds</span>",
     heroBody: "Train in the city. Go farther outside. Keep returning with the right people.",
     heroCtaActivities: "Activities",
@@ -687,3 +663,8 @@ window.EVERWILD_HOME_COPY = {
     footerTerms: "Terms of Use"
   }
 };
+
+if (typeof window.mergeNavIntoCopy === "function") {
+  window.mergeNavIntoCopy(window.EVERWILD_HOME_COPY);
+}
+
