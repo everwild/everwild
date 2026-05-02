@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>html[data-i18n-cloak] body{visibility:hidden}</style>
+  <script>(function(){try{var v=localStorage.getItem("site-language");if(v&&v!=="zh")document.documentElement.setAttribute("data-i18n-cloak","");}catch(e){}})();</script>
   <meta name="description" content="2026 年 EVERWILD 极野富士山登山季招募，面向真正想走进富士山的朋友，说明开放季、双语向导、富士山讲解、适合人群、规则与报名方式。">
   <meta name="theme-color" content="#f4f1eb">
   <title>2026 年富士山登山招募 · EVERWILD 极野</title>
   <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/images/logo/favicon-e.svg?v=4">
   <link rel="apple-touch-icon" href="../assets/images/logo/everwild-logo-vertical-black.png">
-  <link rel="stylesheet" href="../assets/css/shared/site-core.css">
-  <link rel="stylesheet" href="../assets/css/pages/fuji-climbing.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body class="fuji-page">
   <header class="site-header" data-site-header>
@@ -460,18 +461,20 @@
   <footer class="site-footer">
     <div class="footer-bar">
       <div class="footer-branding">
-        <span class="footer-overline" data-i18n="footerOverline">EVERWILD 极野</span>
-        <span class="footer-brand" data-i18n="footerCopyright">© 2026 EVERWILD株式会社. All Rights Reserved.</span>
+        <span class="footer-overline" data-i18n="footerBrandTitle">EVERWILD 极野</span>
+        <span class="footer-brand">
+          <span data-i18n="footerLeft">© 2026 EVERWILD株式会社. All Rights Reserved.</span>
+        </span>
       </div>
       <div class="footer-links">
         <div class="footer-group">
           <span class="footer-group-title" data-i18n="footerContactTitle">联系方式</span>
           <div class="footer-link-list">
-            <a class="footer-link" href="mailto:everwild.global@gmail.com">everwild.global@gmail.com</a>
+            <a class="footer-link" href="mailto:everwild.global@gmail.com" data-i18n="footerContactEmail">everwild.global@gmail.com</a>
           </div>
           <span class="footer-group-title" data-i18n="footerBizTitle">商务合作</span>
           <div class="footer-link-list">
-            <a class="footer-link" href="mailto:everwild.global@gmail.com">everwild.global@gmail.com</a>
+            <a class="footer-link" href="mailto:everwild.global@gmail.com" data-i18n="footerBizEmail">everwild.global@gmail.com</a>
           </div>
         </div>
         <div class="footer-group">
@@ -481,10 +484,10 @@
           </div>
         </div>
         <div class="footer-group">
-          <span class="footer-group-title" data-i18n="footerPrivacyTitle">隐私与条款</span>
+          <span class="footer-group-title" data-i18n="footerPolicyTitle">隐私与条款</span>
           <div class="footer-link-list">
-            <a class="footer-link" href="../privacy/index.html" data-i18n="footerPrivacyLink">隐私政策</a>
-            <a class="footer-link" href="../terms/index.html" data-i18n="footerTermsLink">使用条款</a>
+            <a class="footer-link" href="../privacy/index.html" data-i18n="footerPrivacy">隐私政策</a>
+            <a class="footer-link" href="../terms/index.html" data-i18n="footerTerms">使用条款</a>
           </div>
         </div>
       </div>
@@ -493,6 +496,7 @@
 
   <script src="../assets/js/shared/site-i18n.js"></script>
   <script src="../assets/js/content/fuji-copy.js"></script>
+  <script src="../assets/js/shared/site-nav.js"></script>
   <script src="../assets/js/pages/fuji-climbing.js"></script>
 </body>
 </html>

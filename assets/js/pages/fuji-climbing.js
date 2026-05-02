@@ -31,43 +31,15 @@ if (window.createSiteI18n && window.EVERWILD_FUJI_COPY) {
 }
 
 /* ── Header & nav ── */
-const header    = document.querySelector("[data-site-header]");
-const navToggle = document.querySelector("[data-nav-toggle]");
-const navLinks  = Array.from(document.querySelectorAll("[data-nav-link]"));
-const fujiForm  = document.querySelector("[data-fuji-form]");
+const header   = document.querySelector("[data-site-header]");
+const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+const fujiForm = document.querySelector("[data-fuji-form]");
 
 const syncHeader = () => {
-  if (!header) return;
-  header.classList.toggle("is-scrolled", window.scrollY > 12);
+  syncSiteHeaderScrolled(header);
 };
 
-const closeNav = () => {
-  if (!header || !navToggle) return;
-  header.classList.remove("nav-open");
-  navToggle.setAttribute("aria-expanded", "false");
-};
-
-if (navToggle && header) {
-  navToggle.addEventListener("click", () => {
-    const nextState = !header.classList.contains("nav-open");
-    header.classList.toggle("nav-open", nextState);
-    navToggle.setAttribute("aria-expanded", String(nextState));
-  });
-
-  document.addEventListener("click", (event) => {
-    if (header.classList.contains("nav-open") && !header.contains(event.target)) {
-      closeNav();
-    }
-  });
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNav();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 860) closeNav();
-  });
-}
+initSiteNav({ header, navLinks });
 
 /* ── Scroll-linked nav highlight ── */
 const navSections = navLinks
@@ -98,16 +70,12 @@ const syncCurrentNav = () => {
     const isCurrent = link.getAttribute("href") === `#${activeId}`;
     link.classList.toggle("is-current", isCurrent);
     if (isCurrent) {
-      link.setAttribute("aria-current", "page");
+      link.setAttribute("aria-current", "location");
     } else {
       link.removeAttribute("aria-current");
     }
   });
 };
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => closeNav());
-});
 
 /* ── Scroll performance ── */
 let scrollSyncPending = false;

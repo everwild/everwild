@@ -167,15 +167,17 @@ window.EVERWILD_FUJI_COPY = {
     fSubmit:            "获取详细行程与报价 <span aria-hidden=\"true\">→</span>",
 
     /* ── Footer ── */
-    footerOverline:     "EVERWILD 极野",
-    footerCopyright:    "© 2026 EVERWILD株式会社. All Rights Reserved.",
+    footerBrandTitle: "EVERWILD 极野",
+    footerLeft: "© 2026 EVERWILD株式会社. All Rights Reserved.",
     footerContactTitle: "联系方式",
-    footerBizTitle:     "商务合作",
-    footerLegalTitle:   "法务信息",
-    footerLegalLink:    "查看法务信息",
-    footerPrivacyTitle: "隐私与条款",
-    footerPrivacyLink:  "隐私政策",
-    footerTermsLink:    "使用条款"
+    footerContactEmail: "everwild.global@gmail.com",
+    footerBizTitle: "商务合作",
+    footerBizEmail: "everwild.global@gmail.com",
+    footerLegalTitle: "法务信息",
+    footerLegalLink: "查看法务信息",
+    footerPolicyTitle: "隐私与条款",
+    footerPrivacy: "隐私政策",
+    footerTerms: "使用条款"
   },
 
   /* ══════════════════════ JAPANESE ══════════════════════ */
@@ -186,13 +188,13 @@ window.EVERWILD_FUJI_COPY = {
 
     /* ── Nav ── */
     navBrand:      "ブランド",
-    navActivities: "活動",
+    navActivities: "アウトドア",
     navFuji:       "2026富士山",
-    navErc:        "ラン",
+    navErc:        "ランニングクラブ",
     navWs:         "トレーニング",
-    navMedia:      "メディア",
-    navAbout:      "概要",
-    navJoin:       "参加申込",
+    navMedia:      "コンテンツ",
+    navAbout:      "私たちについて",
+    navJoin:       "参加",
 
     /* ── Hero ── */
     heroImgAlt:          "富士山と青空",
@@ -347,15 +349,17 @@ window.EVERWILD_FUJI_COPY = {
     fSubmit:            "詳細行程と料金を受け取る <span aria-hidden=\"true\">→</span>",
 
     /* ── Footer ── */
-    footerOverline:     "EVERWILD 極野",
-    footerCopyright:    "© 2026 EVERWILD株式会社. All Rights Reserved.",
-    footerContactTitle: "連絡先",
-    footerBizTitle:     "ビジネスに関するお問い合わせ",
-    footerLegalTitle:   "法的情報",
-    footerLegalLink:    "法的情報を確認する",
-    footerPrivacyTitle: "プライバシーとご利用規約",
-    footerPrivacyLink:  "プライバシーポリシー",
-    footerTermsLink:    "利用規約"
+    footerBrandTitle: "EVERWILD 极野",
+    footerLeft: "© 2026 EVERWILD株式会社. All Rights Reserved.",
+    footerContactTitle: "お問い合わせ",
+    footerContactEmail: "everwild.global@gmail.com",
+    footerBizTitle: "ビジネス",
+    footerBizEmail: "everwild.global@gmail.com",
+    footerLegalTitle: "法務情報",
+    footerLegalLink: "法務情報を見る",
+    footerPolicyTitle: "プライバシーと規約",
+    footerPrivacy: "プライバシーポリシー",
+    footerTerms: "利用規約"
   },
 
   /* ══════════════════════ ENGLISH ══════════════════════ */
@@ -366,12 +370,12 @@ window.EVERWILD_FUJI_COPY = {
 
     /* ── Nav ── */
     navBrand:      "Brand",
-    navActivities: "Activities",
-    navFuji:       "Fuji 2026",
-    navErc:        "ERC",
-    navWs:         "WILD SPACE",
-    navMedia:      "Media",
-    navAbout:      "About",
+    navActivities: "Outdoor Activities",
+    navFuji:       "2026 Mount Fuji",
+    navErc:        "Running Club",
+    navWs:         "Training",
+    navMedia:      "Content",
+    navAbout:      "About Us",
     navJoin:       "Join",
 
     /* ── Hero ── */
@@ -527,14 +531,16 @@ window.EVERWILD_FUJI_COPY = {
     fSubmit:            "Get full itinerary &amp; pricing <span aria-hidden=\"true\">→</span>",
 
     /* ── Footer ── */
-    footerOverline:     "EVERWILD",
-    footerCopyright:    "© 2026 EVERWILD Inc. All Rights Reserved.",
+    footerBrandTitle: "EVERWILD 极野",
+    footerLeft: "© 2026 EVERWILD Co., Ltd. All Rights Reserved.",
     footerContactTitle: "Contact",
-    footerBizTitle:     "Business inquiries",
-    footerLegalTitle:   "Legal",
-    footerLegalLink:    "Legal information",
-    footerPrivacyTitle: "Privacy &amp; Terms",
-    footerPrivacyLink:  "Privacy Policy",
-    footerTermsLink:    "Terms of Use"
+    footerContactEmail: "everwild.global@gmail.com",
+    footerBizTitle: "Business",
+    footerBizEmail: "everwild.global@gmail.com",
+    footerLegalTitle: "Legal",
+    footerLegalLink: "View Legal Information",
+    footerPolicyTitle: "Privacy & Terms",
+    footerPrivacy: "Privacy Policy",
+    footerTerms: "Terms of Use"
   }
 };

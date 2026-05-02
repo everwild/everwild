@@ -1,8 +1,6 @@
 const copy = window.EVERWILD_HOME_COPY || {};
 
 const header = document.querySelector("[data-site-header]");
-const navToggle = document.querySelector("[data-nav-toggle]");
-const navPanel = document.querySelector("[data-nav-panel]");
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
 const staticForm = document.querySelector(".contact-form");
 const placeholderNodes = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
@@ -29,20 +27,7 @@ const navSections = navLinks
   .filter(Boolean);
 
 const syncHeader = () => {
-  if (!header) {
-    return;
-  }
-
-  header.classList.toggle("is-scrolled", window.scrollY > 12);
-};
-
-const closeNav = () => {
-  if (!header || !navToggle) {
-    return;
-  }
-
-  header.classList.remove("nav-open");
-  navToggle.setAttribute("aria-expanded", "false");
+  syncSiteHeaderScrolled(header);
 };
 
 const syncCurrentNav = (activeId) => {
@@ -51,7 +36,7 @@ const syncCurrentNav = (activeId) => {
     const isCurrent = Boolean(activeId) && linkId === activeId;
     link.classList.toggle("is-current", isCurrent);
     if (isCurrent) {
-      link.setAttribute("aria-current", "page");
+      link.setAttribute("aria-current", "location");
     } else {
       link.removeAttribute("aria-current");
     }
@@ -104,45 +89,16 @@ const scheduleScrollSync = () => {
   });
 };
 
-if (navToggle && navPanel) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = header.classList.contains("nav-open");
-    header.classList.toggle("nav-open", !isOpen);
-    navToggle.setAttribute("aria-expanded", String(!isOpen));
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const id = link.getAttribute("href")?.replace(/^#/, "");
-      if (id) {
-        syncCurrentNav(id);
-      }
-      closeNav();
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!header.classList.contains("nav-open")) {
-      return;
+initSiteNav({
+  header,
+  navLinks,
+  onNavLinkActivate(link) {
+    const id = link.getAttribute("href")?.replace(/^#/, "");
+    if (id) {
+      syncCurrentNav(id);
     }
-
-    if (!header.contains(event.target)) {
-      closeNav();
-    }
-  });
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeNav();
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 860) {
-      closeNav();
-    }
-  });
-}
+  }
+});
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver((entries) => {

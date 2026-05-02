@@ -1,4 +1,7 @@
 window.createSiteI18n = ({ copy, onApply }) => {
+  setTimeout(() => {
+    document.documentElement.removeAttribute("data-i18n-cloak");
+  }, 4500);
   const langButtons = Array.from(document.querySelectorAll("[data-lang-toggle]"));
   const i18nNodes = Array.from(document.querySelectorAll("[data-i18n]"));
   const i18nHtmlNodes = Array.from(document.querySelectorAll("[data-i18n-html]"));
@@ -76,6 +79,10 @@ window.createSiteI18n = ({ copy, onApply }) => {
     } catch (error) {
       console.debug("Language preference could not be stored.", error);
     }
+
+    requestAnimationFrame(() => {
+      document.documentElement.removeAttribute("data-i18n-cloak");
+    });
   };
 
   langButtons.forEach((button) => {
