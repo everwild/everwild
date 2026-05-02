@@ -1,25 +1,48 @@
-if (window.createSiteI18n && window.EVERWILD_NAV_COPY) {
-  window.createSiteI18n({ copy: window.EVERWILD_NAV_COPY });
+/* ── i18n ── */
+if (window.createSiteI18n && window.EVERWILD_FUJI_COPY) {
+  window.createSiteI18n({
+    copy: window.EVERWILD_FUJI_COPY,
+    onApply({ bundle }) {
+      /* meta description */
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && bundle.metaDesc) {
+        metaDesc.setAttribute("content", bundle.metaDesc);
+      }
+
+      /* placeholder attributes */
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.dataset.i18nPlaceholder;
+        if (bundle[key]) el.setAttribute("placeholder", bundle[key]);
+      });
+
+      /* aria-label attributes */
+      document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+        const key = el.dataset.i18nAriaLabel;
+        if (bundle[key]) el.setAttribute("aria-label", bundle[key]);
+      });
+
+      /* img alt attributes */
+      document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+        const key = el.dataset.i18nAlt;
+        if (bundle[key]) el.setAttribute("alt", bundle[key]);
+      });
+    }
+  });
 }
 
-const header = document.querySelector("[data-site-header]");
+/* ── Header & nav ── */
+const header    = document.querySelector("[data-site-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
-const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
-const fujiForm = document.querySelector("[data-fuji-form]");
+const navLinks  = Array.from(document.querySelectorAll("[data-nav-link]"));
+const fujiForm  = document.querySelector("[data-fuji-form]");
 
 const syncHeader = () => {
-  if (!header) {
-    return;
-  }
-
+  if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 12);
 };
 
 const closeNav = () => {
-  if (!header || !navToggle) {
-    return;
-  }
-
+  if (!header || !navToggle) return;
   header.classList.remove("nav-open");
   navToggle.setAttribute("aria-expanded", "false");
 };
@@ -38,43 +61,33 @@ if (navToggle && header) {
   });
 
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeNav();
-    }
+    if (event.key === "Escape") closeNav();
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 860) {
-      closeNav();
-    }
+    if (window.innerWidth > 860) closeNav();
   });
 }
 
+/* ── Scroll-linked nav highlight ── */
 const navSections = navLinks
   .map((link) => {
     const href = link.getAttribute("href") || "";
-    if (!href.startsWith("#")) {
-      return null;
-    }
-
+    if (!href.startsWith("#")) return null;
     const section = document.getElementById(href.slice(1));
     return section ? { link, section, id: href.slice(1) } : null;
   })
   .filter(Boolean);
 
 const syncCurrentNav = () => {
-  if (!navSections.length) {
-    return;
-  }
+  if (!navSections.length) return;
 
-  const offset = (header?.offsetHeight || 0) + Math.min(window.innerHeight * 0.18, 140);
-  const marker = window.scrollY + offset;
-  let activeId = navSections[0].id;
+  const offset   = (header?.offsetHeight || 0) + Math.min(window.innerHeight * 0.18, 140);
+  const marker   = window.scrollY + offset;
+  let   activeId = navSections[0].id;
 
   navSections.forEach(({ id, section }) => {
-    if (section.offsetTop <= marker) {
-      activeId = id;
-    }
+    if (section.offsetTop <= marker) activeId = id;
   });
 
   if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 6) {
@@ -93,17 +106,13 @@ const syncCurrentNav = () => {
 };
 
 navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    closeNav();
-  });
+  link.addEventListener("click", () => closeNav());
 });
 
+/* ── Scroll performance ── */
 let scrollSyncPending = false;
 const scheduleScrollSync = () => {
-  if (scrollSyncPending) {
-    return;
-  }
-
+  if (scrollSyncPending) return;
   scrollSyncPending = true;
   window.requestAnimationFrame(() => {
     syncHeader();
@@ -112,6 +121,7 @@ const scheduleScrollSync = () => {
   });
 };
 
+/* ── Reveal animations ── */
 document.querySelectorAll("[data-reveal]").forEach((node, index) => {
   node.style.setProperty("--reveal-delay", `${Math.min(index, 8) * 45}ms`);
 });
@@ -124,33 +134,31 @@ if ("IntersectionObserver" in window) {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, {
-    rootMargin: "0px 0px -8% 0px",
-    threshold: 0.05
-  });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
 
   document.querySelectorAll("[data-reveal]").forEach((node) => revealObserver.observe(node));
 } else {
   document.querySelectorAll("[data-reveal]").forEach((node) => node.classList.add("is-visible"));
 }
 
+/* ── Form submission → mailto ── */
 if (fujiForm) {
   fujiForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (!fujiForm.reportValidity()) return;
 
-    if (!fujiForm.reportValidity()) {
-      return;
-    }
-
-    const data = new FormData(fujiForm);
-    const targetEmail = fujiForm.dataset.contactEmail || "everwild.global@gmail.com";
-    const name = String(data.get("name") || "").trim();
-    const contact = String(data.get("contact") || "").trim();
+    const data         = new FormData(fujiForm);
+    const targetEmail  = fujiForm.dataset.contactEmail || "everwild.global@gmail.com";
+    const name         = String(data.get("name")         || "").trim();
+    const contact      = String(data.get("contact")      || "").trim();
     const participants = String(data.get("participants") || "").trim();
-    const month = String(data.get("month") || "").trim();
-    const experience = String(data.get("experience") || "").trim();
-    const message = String(data.get("message") || "").trim();
-    const subject = ["2026 EVERWILD 富士山登山招募", month, name || contact].filter(Boolean).join(" / ");
+    const month        = String(data.get("month")        || "").trim();
+    const experience   = String(data.get("experience")   || "").trim();
+    const message      = String(data.get("message")      || "").trim();
+
+    const subject = ["2026 EVERWILD 富士山登山招募", month, name || contact]
+      .filter(Boolean).join(" / ");
+
     const body = [
       "2026 EVERWILD 富士山登山报名意向",
       "",
@@ -166,7 +174,8 @@ if (fujiForm) {
       `页面：${window.location.href}`
     ].join("\n");
 
-    window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href =
+      `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 
